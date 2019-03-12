@@ -1,3 +1,3 @@
-import BlogContent from '@screens/BlogContent'
+import BlogEditing from '@screens/BlogEditing'
 
-export default BlogContent
+export default BlogEditing

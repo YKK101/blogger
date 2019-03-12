@@ -21,4 +21,8 @@ const styles = StyleSheet.create({
   }
 })
 
+Text.propTypes = {
+  ...RNText.propTypes,
+}
+
 export default Text

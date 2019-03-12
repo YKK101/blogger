@@ -20,4 +20,8 @@ const styles = StyleSheet.create({
   }
 })
 
+Title.propTypes = {
+  ...Text.propTypes,
+}
+
 export default Title
