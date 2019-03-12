@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 5545,
-  "expoServerNgrokUrl": "https://yc-w5y.kanya101.blogger.exp.direct",
-  "packagerNgrokUrl": "https://packager.yc-w5y.kanya101.blogger.exp.direct",
-  "ngrokPid": 5556,
+  "packagerPid": 8755,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": null
 }
