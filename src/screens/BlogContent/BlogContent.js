@@ -7,19 +7,37 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 import {
+  Button,
   Text,
   Title,
 } from '@components'
 
-const mock = {
-  title: 'Get Start',
-  content: `
-  Hello
-  Today is Sunday
-  `,
-}
-
 class BlogContent extends PureComponent {
+  static navigationOptions = ({ navigation }) => {
+    const { mode, onSave } = navigation.state.params
+    return ({
+      title: mode === 'VIEW' ? 'Blog' : 'Preview',
+      headerRight: mode === 'VIEW' ? null : (
+        <Button
+          title="Save"
+          type="GHOST"
+          color="#007AFF"
+          onPress={() => {
+            if (onSave) { onSave() }
+          }}
+        />
+      ),
+    })
+  }
+
+  componentDidMount() {
+    this.props.navigation.setParams({ onSave: this.onSave })
+  }
+
+  onSave = () => {
+    console.warn('SAVE')
+  }
+
   render() {
     const { blog } = this.props.navigation.state.params
     return (
@@ -53,8 +71,10 @@ BlogContent.propTypes = {
           title: PropTypes.string.isRequired,
           content: PropTypes.string.isRequired,
         }).isRequired,
+        onSave: PropTypes.func,
       }).isRequired,
     }).isRequired,
+    setParams: PropTypes.func.isRequired,
   }).isRequired,
 }
 

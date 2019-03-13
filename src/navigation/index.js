@@ -9,6 +9,8 @@ const AppNavigator = createStackNavigator({
   BLOG_CONTENT: {
     screen: BlogContent,
   },
+}, {
+  headerBackTitleVisible: false,
 })
 
 export default AppNavigator

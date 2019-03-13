@@ -9,12 +9,23 @@ import Text from './Text'
 
 class Button extends PureComponent {
   render() {
+    const { type, color } = this.props
     const backgroundStyle = [
       styles.background,
-      {
-        backgroundColor: this.props.color,
+      type === 'FILL' && {
+        backgroundColor: color,
+      },
+      type === 'OUTLINE' && {
+        borderWidth: 1,
+        borderColor: color,
       },
       this.props.style,
+    ]
+
+    const textStyle = [
+      styles.title,
+      type !== 'FILL' && { color },
+      this.props.textStyle
     ]
 
     return (
@@ -22,9 +33,10 @@ class Button extends PureComponent {
         style={backgroundStyle}
         onPress={this.props.onPress}
         activeOpacity={0.8}
+        hitSlop={{ top: 8, left: 8, right: 8, bottom: 8 }}
       >
         <Text
-          style={[styles.title, this.props.textStyle]}
+          style={textStyle}
         >
           {this.props.title}
         </Text>
@@ -43,10 +55,12 @@ const styles = StyleSheet.create({
   },
   title: {
     color: 'white',
+    fontWeight: 'bold',
   },
 })
 
 Button.propTypes = {
+  type: PropTypes.oneOf(['FILL', 'OUTLINE', 'GHOST']),
   color: PropTypes.string,
   onPress: PropTypes.func,
   style: ViewPropTypes.style,
@@ -55,6 +69,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
+  type: 'FILL',
   color: 'green',
   onPress: () => {},
   title: '',

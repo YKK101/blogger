@@ -13,6 +13,10 @@ import {
 } from '@components'
 
 class BlogEditing extends PureComponent {
+  static navigationOptions = {
+    title: 'Write your new blog'
+  }
+
   titleInput = undefined
   contentInput = undefined
 
