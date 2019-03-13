@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native'
+import PropTypes from 'prop-types'
 import {
   Button,
   Text,
@@ -13,7 +14,9 @@ import {
 
 class BlogEditing extends PureComponent {
   onSubmitForm = () => {
-    console.warn('SUBMIT')
+    this.props.navigation.navigate({
+      routeName: 'BLOG_CONTENT',
+    })
   }
 
   render() {
@@ -53,5 +56,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 })
+
+BlogEditing.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+}
 
 export default BlogEditing
