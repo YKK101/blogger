@@ -6,11 +6,13 @@ import {
   StyleSheet,
 } from 'react-native'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import {
   Button,
   Text,
   Title,
 } from '@components'
+import { createBlog } from '@redux/blog'
 
 class BlogContent extends PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -35,7 +37,14 @@ class BlogContent extends PureComponent {
   }
 
   onSave = () => {
-    console.warn('SAVE')
+    if (this.props?.createBlog) {
+      const { blog } = this.props.navigation.state.params
+      this.props.createBlog({
+        title: blog.title,
+        content: blog.content,
+      })
+      this.props.navigation.popToTop()
+    }
   }
 
   render() {
@@ -78,4 +87,13 @@ BlogContent.propTypes = {
   }).isRequired,
 }
 
-export default BlogContent
+const mapStateToProps = (state) => {
+  console.warn(state)
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => ({
+  createBlog: (payload) => { dispatch(createBlog(payload)) }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlogContent)
