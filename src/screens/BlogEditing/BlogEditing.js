@@ -13,6 +13,15 @@ import {
 } from '@components'
 
 class BlogEditing extends PureComponent {
+  titleInput = undefined
+  contentInput = undefined
+
+  focusContentInput = () => {
+    if (this.contentInput?.focus) {
+      this.contentInput.focus()
+    }
+  }
+
   onSubmitForm = () => {
     this.props.navigation.navigate({
       routeName: 'BLOG_CONTENT',
@@ -22,10 +31,19 @@ class BlogEditing extends PureComponent {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-      <View style={styles.contentContainer}>
-        <TextInput />
+      <ScrollView
+        contentContainerStyle={styles.contentContainer}
+        scrollEnabled={false}
+      >
         <TextInput
+          ref={(ref) => { this.titleInput = ref }}
+          placeholder="Title"
+          onSubmitEditing={this.focusContentInput}
+        />
+        <TextInput
+          ref={(ref) => { this.contentInput = ref }}
           style={styles.blogContentInput}
+          placeholder="Add your content here..."
           multiline
         />
         <Button
@@ -33,7 +51,7 @@ class BlogEditing extends PureComponent {
           title="Submit"
           onPress={this.onSubmitForm}
         />
-      </View>
+      </ScrollView>
       </SafeAreaView>
     )
   }

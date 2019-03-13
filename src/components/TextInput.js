@@ -6,9 +6,19 @@ import {
 } from 'react-native'
 
 class TextInput extends PureComponent {
+
+  input = undefined
+
+  focus = () => {
+    if (this.input?.focus) {
+      this.input.focus()
+    }
+  }
+
   render() {
     return (
       <RNTextInput
+        ref={(ref) => { this.input = ref }}
         {...this.props}
         style={[styles.textInput, this.props.style]}
       />
@@ -22,6 +32,7 @@ const styles = StyleSheet.create({
     borderColor: 'lightgray',
     borderRadius: 8,
     minHeight: 40,
+    padding: 8,
   },
 })
 
