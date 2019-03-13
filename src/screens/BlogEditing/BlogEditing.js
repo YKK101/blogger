@@ -16,6 +16,19 @@ class BlogEditing extends PureComponent {
   titleInput = undefined
   contentInput = undefined
 
+  state = {
+    title: '',
+    content: '',
+  }
+
+  updateTitle = (text) => {
+    this.setState({ title: text })
+  }
+
+  updateContent = (text) => {
+    this.setState({ content: text })
+  }
+
   focusContentInput = () => {
     if (this.contentInput?.focus) {
       this.contentInput.focus()
@@ -23,8 +36,17 @@ class BlogEditing extends PureComponent {
   }
 
   onSubmitForm = () => {
+    const params = {
+      mode: 'PREVIEW',
+      blog: {
+        title: this.state.title,
+        content: this.state.content,
+      },
+    }
+
     this.props.navigation.navigate({
       routeName: 'BLOG_CONTENT',
+      params,
     })
   }
 
@@ -38,12 +60,16 @@ class BlogEditing extends PureComponent {
         <TextInput
           ref={(ref) => { this.titleInput = ref }}
           placeholder="Title"
+          value={this.state.title}
+          onChangeText={this.updateTitle}
           onSubmitEditing={this.focusContentInput}
         />
         <TextInput
           ref={(ref) => { this.contentInput = ref }}
           style={styles.blogContentInput}
           placeholder="Add your content here..."
+          value={this.state.content}
+          onChangeText={this.updateContent}
           multiline
         />
         <Button

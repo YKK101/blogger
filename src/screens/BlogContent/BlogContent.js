@@ -5,6 +5,7 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native'
+import PropTypes from 'prop-types'
 import {
   Text,
   Title,
@@ -20,13 +21,13 @@ const mock = {
 
 class BlogContent extends PureComponent {
   render() {
-    const data = mock
+    const { blog } = this.props.navigation.state.params
     return (
       <ScrollView style={styles.container}>
         <SafeAreaView />
         <View style={styles.contentContainer}>
-          <Title>{data.title}</Title>
-          <Text>{data.content}</Text>
+          <Title>{blog.title}</Title>
+          <Text>{blog.content}</Text>
         </View>
         <SafeAreaView />
       </ScrollView>
@@ -42,5 +43,19 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 })
+
+BlogContent.propTypes = {
+  navigation: PropTypes.shape({
+    state: PropTypes.shape({
+      params: PropTypes.shape({
+        mode: PropTypes.oneOf(['PREVIEW', 'VIEW']).isRequired,
+        blog: PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          content: PropTypes.string.isRequired,
+        }).isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+}
 
 export default BlogContent
