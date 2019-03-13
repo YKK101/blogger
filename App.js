@@ -1,3 +1,4 @@
-import BlogEditing from '@screens/BlogEditing'
+import { createAppContainer } from 'react-navigation'
+import AppNavigator from '@navigation'
 
-export default BlogEditing
+export default createAppContainer(AppNavigator)

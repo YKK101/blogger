@@ -6,4 +6,6 @@
 - Start server: `npm run start`
 
 __References__:
-- [Expo SDK Document](https://docs.expo.io/versions/latest/)
+- [React Native](https://facebook.github.io/react-native/)
+- [Expo SDK](https://docs.expo.io/versions/latest/)
+- [React Navigation](https://reactnavigation.org/en/)
