@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react'
 import {
-  View,
   SafeAreaView,
   ScrollView,
   StyleSheet,

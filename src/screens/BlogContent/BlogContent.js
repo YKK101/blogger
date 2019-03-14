@@ -7,6 +7,7 @@ import {
 } from 'react-native'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import {
   Button,
   Text,
@@ -51,7 +52,10 @@ class BlogContent extends PureComponent {
   render() {
     const { blog, mode } = this.props.navigation.state.params
     return (
-      <ScrollView style={styles.container}>
+      <KeyboardAwareScrollView
+        style={styles.container}
+        extraScrollHeight={40}
+      >
         <SafeAreaView />
         <View style={styles.contentContainer}>
           <Title>{blog.title}</Title>
@@ -61,7 +65,7 @@ class BlogContent extends PureComponent {
           <BlogComment id={blog.id} />
         )}
         <SafeAreaView />
-      </ScrollView>
+      </KeyboardAwareScrollView>
     )
   }
 }

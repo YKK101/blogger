@@ -21,6 +21,10 @@ class TextInput extends PureComponent {
     }
   }
 
+  isFocused = () => {
+    return this.input?.isFocused() || false
+  }
+
   render() {
     return (
       <RNTextInput
