@@ -10,7 +10,10 @@ const blogReducer = (state = initialState, action) => {
   switch(action.type) {
     case CREATE_BLOG: {
       return {
-        data: cloneDeep(state.data).concat(action.payload)
+        data: cloneDeep(state.data).concat({
+          ...action.payload,
+          id: `blg${state.data.length+1000}`,
+        })
       }
     }
     default: {

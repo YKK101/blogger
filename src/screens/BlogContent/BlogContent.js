@@ -54,7 +54,7 @@ class BlogContent extends PureComponent {
         <SafeAreaView />
         <View style={styles.contentContainer}>
           <Title>{blog.title}</Title>
-          <Text>{blog.content}</Text>
+          <Text style={styles.content}>{blog.content}</Text>
         </View>
         <SafeAreaView />
       </ScrollView>
@@ -68,6 +68,9 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     padding: 16,
+  },
+  content: {
+    marginTop: 8,
   },
 })
 
@@ -88,7 +91,6 @@ BlogContent.propTypes = {
 }
 
 const mapStateToProps = (state) => {
-  console.warn(state)
   return {}
 }
 
