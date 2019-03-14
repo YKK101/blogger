@@ -34,6 +34,13 @@ class CommentBox extends PureComponent {
 
   onSend = () => {
     this.props.onSend(this.state)
+    if (this.userNameInput?.clear) {
+      this.userNameInput.clear()
+    }
+
+    if (this.commentInput?.clear) {
+      this.commentInput.clear()
+    }
   }
 
   render() {

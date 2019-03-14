@@ -15,6 +15,12 @@ class TextInput extends PureComponent {
     }
   }
 
+  clear = () => {
+    if (this.input?.clear) {
+      this.input.clear()
+    }
+  }
+
   render() {
     return (
       <RNTextInput
