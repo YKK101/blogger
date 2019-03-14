@@ -38,10 +38,7 @@ class BlogFeed extends PureComponent {
       routeName: 'BLOG_CONTENT',
       params: {
         mode: 'VIEW',
-        blog: {
-          title: item.title,
-          content: item.content,
-        },
+        blog: item,
       }
     })
   }

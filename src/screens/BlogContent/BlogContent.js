@@ -13,6 +13,7 @@ import {
   Title,
 } from '@components'
 import { createBlog } from '@redux/blog'
+import BlogComment from './BlogComment'
 
 class BlogContent extends PureComponent {
   static navigationOptions = ({ navigation }) => {
@@ -48,7 +49,7 @@ class BlogContent extends PureComponent {
   }
 
   render() {
-    const { blog } = this.props.navigation.state.params
+    const { blog, mode } = this.props.navigation.state.params
     return (
       <ScrollView style={styles.container}>
         <SafeAreaView />
@@ -56,6 +57,9 @@ class BlogContent extends PureComponent {
           <Title>{blog.title}</Title>
           <Text style={styles.content}>{blog.content}</Text>
         </View>
+        { mode === 'VIEW' && (
+          <BlogComment id={blog.id} />
+        )}
         <SafeAreaView />
       </ScrollView>
     )
@@ -80,6 +84,7 @@ BlogContent.propTypes = {
       params: PropTypes.shape({
         mode: PropTypes.oneOf(['PREVIEW', 'VIEW']).isRequired,
         blog: PropTypes.shape({
+          id: PropTypes.string,
           title: PropTypes.string.isRequired,
           content: PropTypes.string.isRequired,
         }).isRequired,
