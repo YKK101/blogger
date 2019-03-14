@@ -24,6 +24,11 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "android": {
+      "package": "com.kanyakiat.blogger"
+    },
+    "description": "",
+    "githubUrl": "https://github.com/YKK101/blogger.git"
   }
 }
