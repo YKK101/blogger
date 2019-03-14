@@ -30,6 +30,7 @@ class TextInput extends PureComponent {
       <RNTextInput
         ref={(ref) => { this.input = ref }}
         {...this.props}
+        textAlignVertical={this.props.multiline ? "top" : "center"}
         style={[styles.textInput, this.props.style]}
       />
     )
