@@ -55,6 +55,7 @@ class BlogContent extends PureComponent {
       <KeyboardAwareScrollView
         style={styles.container}
         extraScrollHeight={40}
+        enableOnAndroid
       >
         <SafeAreaView />
         <View style={styles.contentContainer}>
